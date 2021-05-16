@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<style>
+
+		.container {
+			padding: 20px;
+		}
+		ol {
+			counter-reset: list;
+		}
+
+		ol > li {
+			list-style: none;
+		}
+
+		ol > li:before {
+  			content: counter(list, upper-alpha) ") ";
+  			counter-increment: list;
+		}
+
+	</style>
+
+</head>
+<body>
+    <div class="container">
+
+	<h3 id="question">
+		Who is Clark Kent?
+	</h3>
+
+	<ol>
+		<li>
+		   <input type="radio" class="chb" name="radAnswer"/>
+		   Superman
+		</li>
+		
+		<li>
+		   <input type="radio" class="chb" name="radAnswer"/>
+		   Iron Man
+		</li>
+		
+		<li>
+		   <input type="radio" class="chb" name="radAnswer"/>
+		   Batman
+		</li>
+		
+		<li>
+		   <input type="radio" class="chb" name="radAnswer"/>
+		   Duckman
+		</li>
+		
+	</ol>
+
+	<button id="myBtn">Answer</button>
+
+
+	<p id="results"></p>
+
+		<div class="card">
+
+			<h2>Number Correct</h2>
+			<h3 id="root"></h3>
+
+			<h2>Number Wrong</h2>
+			<h3 id="wrong"></h3>
+
+		</div>
+
+
+	 </div>
+
+	<script>
+
+	//This example uses the addEventListener() method to attach a click event to a button
+
+		var chb = document.getElementsByClassName('chb');
+		var btnClicked = document.getElementById("myBtn");
+		var data = 0;
+		
+
+		document.getElementById("root").innerText=data; //gets root id from h3
+		document.getElementById("wrong").innerText=data; //gets wrong id from h3
+
+
+		btnClicked.addEventListener("click", function() {
+ 			if (chb[0].checked){	
+  			document.getElementById("results").innerHTML = "Correct";
+			data=data+1;
+			document.getElementById("root").innerText=data;
+
+   			}
+    
+  			else {  
+    			document.getElementById("results").innerHTML = "Wrong";
+			data=data+1;
+			document.getElementById("wrong").innerText=data;
+    			}
+		});
+	</script>
+   
+</body>
+</html>
